@@ -1,6 +1,8 @@
 import Banner from '../Banner/Banner'
 import SuccessSection from '../SuccessSection/SuccessSection'
 import OurMission from '../OurMission/OurMission'
+import Challenge from '../Challenge/Challenge'
+import Unique from '../Unique/Unique'
 const Home = () => {
   return (
     <div className='' >
@@ -8,6 +10,10 @@ const Home = () => {
       <Banner />
       <OurMission />
       <SuccessSection />
+      <Challenge />
+      <Unique />
+
+
 
 
     </div>

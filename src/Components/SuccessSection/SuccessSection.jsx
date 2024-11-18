@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 
@@ -16,36 +16,38 @@ const SuccessSection = () => {
   }
 
   return (
-    <section ref={ref} className="bg-gray-100 p-10 text-center">
-      <h1 className="text-4xl font-bold text-center mb-8">Our Success So Far</h1>
+    <section ref={ref} className="bg-gradient-to-r from-blue-500 via-purple-600 to-indigo-700 p-12 text-center text-white">
+      <h1 className="text-4xl font-bold mb-8 animate__animated animate__fadeInUp" data-aos="fade-up">
+        Our Success So Far
+      </h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div className="success-item">
-          <h3 className="text-lg font-semibold">User Count</h3>
-          <p className="text-3xl font-bold text-blue-500">
+        <div className="success-item bg-white text-center p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+          <h3 className="text-lg font-semibold text-black mb-4">User Count</h3>
+          <p className="text-3xl font-bold text-blue-600">
             {hasStartedCounting && (
               <CountUp start={0} end={5000} duration={2.5} separator="," />
             )}
           </p>
         </div>
-        <div className="success-item">
-          <h3 className="text-lg font-semibold">Lesson Count</h3>
-          <p className="text-3xl font-bold text-green-500">
+        <div className="success-item bg-white text-center p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+          <h3 className="text-lg font-semibold text-black mb-4">Lesson Count</h3>
+          <p className="text-3xl font-bold text-green-600">
             {hasStartedCounting && (
               <CountUp start={0} end={200} duration={2.5} separator="," />
             )}
           </p>
         </div>
-        <div className="success-item">
-          <h3 className="text-lg font-semibold">Vocabulary Count</h3>
-          <p className="text-3xl font-bold text-purple-500">
+        <div className="success-item bg-white text-center p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+          <h3 className="text-lg font-semibold text-black mb-4">Vocabulary Count</h3>
+          <p className="text-3xl font-bold text-purple-600">
             {hasStartedCounting && (
               <CountUp start={0} end={15000} duration={2.5} separator="," />
             )}
           </p>
         </div>
-        <div className="success-item">
-          <h3 className="text-lg font-semibold">Tutorial Count</h3>
-          <p className="text-3xl font-bold text-red-500">
+        <div className="success-item bg-white text-center p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+          <h3 className="text-lg font-semibold text-black mb-4">Tutorial Count</h3>
+          <p className="text-3xl font-bold text-red-600">
             {hasStartedCounting && (
               <CountUp start={0} end={120} duration={2.5} separator="," />
             )}
