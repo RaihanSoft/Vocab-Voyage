@@ -13,26 +13,25 @@ export const Provider = ({ children }) => {
 
     // Register 
     const handleRegister = (email, password) => {
-        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
 
 
     }
     // Login 
     const handleLogin = (email, password) => {
-        setLoading(true)
+        // setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     // Signout 
     const handleLogOut = () => {
-        setLoading(true)
+        // setLoading(true)
         signOut(auth)
     }
 
     // Google LogIn  
     const handleGoogleLogin = () => {
-        setLoading(true)
+        // setLoading(true)
         return signInWithPopup(auth, Googleprovider)
 
 
@@ -41,7 +40,7 @@ export const Provider = ({ children }) => {
 
     // Update Profile 
     const manageProfile = (name, image) => {
-        setLoading(true)
+        // setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: image

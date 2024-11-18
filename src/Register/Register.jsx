@@ -1,11 +1,13 @@
 import { useContext, useState } from "react"
 import { Context } from "../Components/Provider/Provider"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
 
   const [error, setError] = useState("")
 
-  const { handleRegister , manageProfile } = useContext(Context)
+  const { handleRegister, manageProfile } = useContext(Context)
+  const navigate = useNavigate()
 
 
 
@@ -24,25 +26,28 @@ const Register = () => {
     }
 
 
-    if(!/[a-z]/.test(password)){
+    if (!/[a-z]/.test(password)) {
       setError("Password must container at least one lowerCase letter")
       return
-    }    if(!/[A-Z]/.test(password)){
+    } if (!/[A-Z]/.test(password)) {
       setError("Password must container at least one UpperCase letter")
       return
     }
-    if(password.length < 6){
+    if (password.length < 6) {
       setError("Password must container al least 6 characters")
       return
 
     }
 
     handleRegister(email, password)
-    .then(() =>{
-      manageProfile(name, image)
+      .then(() => {
+        manageProfile(name, image)
+        navigate('/')
 
 
-    } )
+
+
+      })
   }
 
 

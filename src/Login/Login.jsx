@@ -1,13 +1,25 @@
 import { useContext, useState } from "react"
 import { Context } from "../Components/Provider/Provider"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 
 
 
 const Login = () => {
     const { handleGoogleLogin, handleLogin, } = useContext(Context)
+    const location = useLocation()
+    console.log(location)
+    const navigate = useNavigate()
 
     const [error, setError] = useState("")
+
+    const handleGoogle = () => {
+        handleGoogleLogin()
+        // eslint-disable-next-line no-unused-vars
+        .then(_res => {
+            navigate(location.state.from)
+        })
+
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -15,7 +27,9 @@ const Login = () => {
         const password = e.target.password.value
 
         handleLogin(email, password)
-            .then(() => { })
+            .then(() => {
+                navigate(location.state.from)
+            })
             .catch(err => {
                 setError(err.message)
             })
@@ -71,7 +85,7 @@ const Login = () => {
                             </p>
                         )
                     }
-    
+
 
 
                     <div className="form-control mt-6">
@@ -92,7 +106,7 @@ const Login = () => {
 
 
 
-            <button className="text-center font-bold text-lg flex justify-center items-center my-10  btn " onClick={handleGoogleLogin}  >GoogleLogin</button>
+            <button className="text-center font-bold text-lg flex justify-center items-center my-10  btn " onClick={handleGoogle}  >GoogleLogin</button>
 
             new to the website? please <NavLink to={'/register'} >register</NavLink>
 

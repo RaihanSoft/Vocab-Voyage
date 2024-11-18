@@ -1,12 +1,12 @@
 import logo from "../assets/logo.jpeg";
 import { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Context } from "../Provider/Provider";
 
 const Navbar = () => {
     const { user, handleLogOut } = useContext(Context);
     const [showWelcome, setShowWelcome] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false); 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         if (user && user.email) {
@@ -80,13 +80,15 @@ const Navbar = () => {
             {/* Navbar */}
             <div className="w-11/12 mx-auto flex items-center justify-between py-4">
                 {/* Logo */}
-                <div className="flex items-center">
-                    <img className="w-12 h-12 mr-2" src={logo} alt="Logo" />
-                    <div>
-                        <h2 className="text-red-500 font-bold text-2xl">Lingo</h2>
-                        <h2 className="text-blue-500 font-bold text-2xl">Bingo</h2>
+                <Link to={'/'}>
+                    <div className="flex items-center">
+                        <img className="w-12 h-12 mr-2" src={logo} alt="Logo" />
+                        <div>
+                            <h2 className="text-red-500 font-bold text-2xl">Lingo</h2>
+                            <h2 className="text-blue-500 font-bold text-2xl">Bingo</h2>
+                        </div>
                     </div>
-                </div>
+                </Link>
 
                 {/* Links for larger screens */}
                 <div className="hidden lg:flex flex-1 justify-start">{links}</div>
