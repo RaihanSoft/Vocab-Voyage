@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLoaderData, useParams, Link } from "react-router-dom";
 
 const Lesson = () => {
+
+
   const { lesson_no } = useParams();  // Get the lesson number from the URL
   const { lessonVocabularies } = useLoaderData();  // Get the filtered vocabularies passed from loader
   const [modalData, setModalData] = useState(null); // State for the modal data

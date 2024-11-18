@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 const LetsLearnPage = () => {
+
+  console.log(import.meta.env.VITE_a)
   const navigate = useNavigate();
   const lessons = Array.from({ length: 10 }, (_, index) => ({
     lessonNo: index + 1,
