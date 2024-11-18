@@ -1,11 +1,10 @@
 import { useState } from "react";
+import { FaVolumeUp } from "react-icons/fa";
 import { useLoaderData, useParams, Link } from "react-router-dom";
 
 const Lesson = () => {
-
-
-  const { lesson_no } = useParams();  // Get the lesson number from the URL
-  const { lessonVocabularies } = useLoaderData();  // Get the filtered vocabularies passed from loader
+  const { lesson_no } = useParams(); // Get the lesson number from the URL
+  const { lessonVocabularies } = useLoaderData(); // Get the filtered vocabularies passed from loader
   const [modalData, setModalData] = useState(null); // State for the modal data
 
   // Function to open the modal with the relevant vocabulary details
@@ -16,6 +15,17 @@ const Lesson = () => {
   // Function to close the modal
   const closeModal = () => {
     setModalData(null);
+  };
+
+  // Function to speak the vocabulary word
+  const speakWord = (word) => {
+    if ("speechSynthesis" in window) {
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = "en-US"; // Set the language to English (adjust as needed)
+      speechSynthesis.speak(utterance);
+    } else {
+      alert("Sorry, your browser does not support text-to-speech.");
+    }
   };
 
   return (
@@ -30,21 +40,41 @@ const Lesson = () => {
           lessonVocabularies.map((vocab) => (
             <div
               key={vocab.id}
-              className={`p-4 border rounded-lg ${
-                vocab.difficulty === "easy"
-                  ? "bg-green-200"
-                  : vocab.difficulty === "medium"
+              className={`p-4 border rounded-lg ${vocab.difficulty === "easy"
+                ? "bg-green-200"
+                : vocab.difficulty === "medium"
                   ? "bg-orange-200"
                   : "bg-red-200"
-              }`}
+                }`}
             >
-              <h3 className="font-semibold">{vocab.word}</h3>
-              <p><strong>Meaning:</strong> {vocab.meaning}</p>
-              <p><strong>Pronunciation:</strong> {vocab.pronunciation}</p>
-              <p><strong>Part of Speech:</strong> {vocab.part_of_speech}</p>
+              <h3 className="font-semibold flex items-center">
+                {vocab.word}
+                <button
+                  onClick={() => speakWord(vocab.word)}
+                  className=" ml-8 p-1 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition"
+                  aria-label={`Speak ${vocab.word}`}
+                >
+                  {/* Microphone Icon */}
+                  <div className="flex text-xl " >
+                    <FaVolumeUp />
+                  </div>
+                </button>
+              </h3>
+              <p>
+                <strong>Meaning:</strong> {vocab.meaning}
+              </p>
+              <p>
+                <strong>Pronunciation:</strong> {vocab.pronunciation}
+              </p>
+              <p>
+                <strong>Part of Speech:</strong> {vocab.part_of_speech}
+              </p>
 
               <button
-                onClick={() => openModal(vocab)}
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click event
+                  openModal(vocab);
+                }}
                 className="mt-2 p-2 bg-blue-500 text-white rounded-md"
               >
                 When to Say
@@ -59,9 +89,15 @@ const Lesson = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
           <div className="bg-white p-6 rounded-lg">
             <h3 className="font-semibold text-lg">{modalData.word}</h3>
-            <p><strong>Meaning:</strong> {modalData.meaning}</p>
-            <p><strong>When to Say:</strong> {modalData.when_to_say}</p>
-            <p><strong>Example:</strong> {modalData.example}</p>
+            <p>
+              <strong>Meaning:</strong> {modalData.meaning}
+            </p>
+            <p>
+              <strong>When to Say:</strong> {modalData.when_to_say}
+            </p>
+            <p>
+              <strong>Example:</strong> {modalData.example}
+            </p>
             <button
               onClick={closeModal}
               className="mt-4 p-2 bg-red-500 text-white rounded-md"
