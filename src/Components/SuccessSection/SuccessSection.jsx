@@ -11,14 +11,13 @@ const SuccessSection = () => {
     threshold: 0.5,     // Trigger when 50% of the section is in view
   });
 
-  // Trigger counting when the section is in view
   if (inView && !hasStartedCounting) {
     setHasStartedCounting(true);
   }
 
   return (
     <section ref={ref} className="bg-gray-100 p-10 text-center">
-      <h2 className="text-2xl font-bold mb-6">Our Success So Far</h2>
+      <h1 className="text-4xl font-bold text-center mb-8">Our Success So Far</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         <div className="success-item">
           <h3 className="text-lg font-semibold">User Count</h3>
