@@ -6,7 +6,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      yellow: {
+        400: "#FFD700", // Luxurious gold
+      },
+
+    },
   },
   plugins: [daisyui],
 }
