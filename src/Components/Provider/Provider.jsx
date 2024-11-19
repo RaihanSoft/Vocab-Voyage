@@ -40,14 +40,19 @@ export const Provider = ({ children }) => {
 
     // Update Profile 
     const manageProfile = (name, image) => {
-        // setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL: image
-        })
+            photoURL: image,
+        }).then(() => {
+            // Update the user state after profile change
+            setUser({
+                ...auth.currentUser,
+                displayName: name,
+                photoURL: image,
+            });
+        });
+    };
 
-
-    }
 
     // observer 
     useEffect(() => {
