@@ -11,6 +11,7 @@ import Profile from '../Components/Profile/Profile';
 import Lesson from '../Components/Lessons/Lessons';
 import ForgotPassword from '../Components/ForgotPassword/ForgotPassword';
 import UpdateProfile from '../Components/UpdateProfile/UpdateProfile ';
+import ErrorPage from '../Components/Error/ErrorPage';
 
 export const router = createBrowserRouter([
     {
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/aboutUs',
-                element: <PrivateRoute> <AboutUs /></PrivateRoute>
+                element: <AboutUs />
             },
             {
                 path: '/myProfile',
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
                 element: <ForgotPassword />
 
             },
+
             {
                 path: '/register',
                 element: <Register />
@@ -70,5 +72,11 @@ export const router = createBrowserRouter([
                 },
             },
         ]
+
+    },
+    {
+        path: "*",
+        element: <ErrorPage />
+
     },
 ]);

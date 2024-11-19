@@ -1,13 +1,43 @@
 import { useContext, useState } from "react";
 import { Context } from "../Components/Provider/Provider";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const [error, setError] = useState("");
 
-  const { handleRegister, manageProfile } = useContext(Context);
+  const { handleRegister, manageProfile, handleGoogleLogin } = useContext(Context);
   const navigate = useNavigate();
+
+
+  const handleGoogle = () => {
+    handleGoogleLogin()
+      .then(() => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Welcome back!",
+          text: "Login successful!",
+          showConfirmButton: false,
+          timer: 1500,
+          customClass: {
+            popup: "animate__animated animate__backInRight",
+            icon: "animate__animated animate__zoomIn",
+            title: "animate__animated animate__fadeInDown",
+            content: "animate__animated animate__lightSpeedInRight",
+          },
+        });
+
+        // Navigate to the home page
+        navigate("/");
+
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
+      });
+  };
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -159,6 +189,21 @@ const Register = () => {
           </button>
         </div>
       </form>
+
+      {/* Google Login */}
+      <button
+        className="text-center font-bold text-lg flex justify-center items-center my-10 btn"
+        onClick={handleGoogle}
+      >
+        Google Login
+      </button>
+
+
+      {/* Login Link */}
+      <p>
+        Already have an account? Please{" "}
+        <NavLink to={"/login"}>login</NavLink>
+      </p>
     </div>
   );
 };

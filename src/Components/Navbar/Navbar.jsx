@@ -43,15 +43,7 @@ const Navbar = () => {
             >
                 Tutorials
             </NavLink>
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-3 rounded-lg" : "hover:underline"
-                }
-                to="/aboutUs"
-                onClick={() => setIsMenuOpen(false)}
-            >
-                About-Us
-            </NavLink>
+
             {user && user.email && (
                 <NavLink
                     className={({ isActive }) =>
@@ -62,7 +54,18 @@ const Navbar = () => {
                 >
                     My-Profile
                 </NavLink>
+
+
             )}
+            <NavLink
+                className={({ isActive }) =>
+                    isActive ? "bg-black text-white p-3 rounded-lg" : "hover:underline"
+                }
+                to="/aboutUs"
+                onClick={() => setIsMenuOpen(false)}
+            >
+                About-Us
+            </NavLink>
         </div>
     );
 
