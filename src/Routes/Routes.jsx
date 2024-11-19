@@ -9,6 +9,7 @@ import Tutorials from '../Components/Tutorials/Tutorials';
 import AboutUs from '../Components/AboutUs/AboutUs';
 import Profile from '../Components/Profile/Profile';
 import Lesson from '../Components/Lessons/Lessons';
+import ForgotPassword from '../Components/ForgotPassword/ForgotPassword';
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +39,11 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login />
+            },
+            {
+                path: "/forgot-password",
+                element: <ForgotPassword />
+
             },
             {
                 path: '/register',

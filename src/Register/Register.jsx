@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { Context } from "../Components/Provider/Provider"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2"
 
 const Register = () => {
 
@@ -41,13 +42,34 @@ const Register = () => {
 
     handleRegister(email, password)
       .then(() => {
-        manageProfile(name, image)
-        navigate('/')
+        // Update profile with name and image
+        manageProfile(name, image);
 
-
-
-
+        // Show SweetAlert on successful registration
+        Swal.fire({
+          title: "Registration Successful!",
+          text: `Welcome, ${name}! Your account has been created.`,
+          icon: "success",
+          confirmButtonText: "Proceed",
+          timer: 3000, // Auto-close after 3 seconds
+          timerProgressBar: true, // Show progress bar
+          customClass: {
+            popup: "animate__animated animate__fadeInDown", // Animate.css class for popup
+          },
+        }).then(() => {
+          // Navigate after SweetAlert is closed
+          navigate("/");
+        });
       })
+      .catch((err) => {
+        // Handle errors with an error SweetAlert
+        Swal.fire({
+          title: "Registration Failed",
+          text: err.message,
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      });
   }
 
 
