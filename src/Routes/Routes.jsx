@@ -10,6 +10,7 @@ import AboutUs from '../Components/AboutUs/AboutUs';
 import Profile from '../Components/Profile/Profile';
 import Lesson from '../Components/Lessons/Lessons';
 import ForgotPassword from '../Components/ForgotPassword/ForgotPassword';
+import UpdateProfile from '../Components/UpdateProfile/UpdateProfile ';
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,11 @@ export const router = createBrowserRouter([
             {
                 path: '/myProfile',
                 element: <PrivateRoute> <Profile />  </PrivateRoute>
+            },
+            {
+                path: "/update-profile",
+                element: <UpdateProfile />
+
             },
             {
                 path: '/login',
