@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaVolumeUp } from "react-icons/fa";
 import { useLoaderData, useParams, Link } from "react-router-dom";
+import "animate.css"; // Import Animate.css
 
 const Lesson = () => {
   const { lesson_no } = useParams(); // Get the lesson number from the URL
@@ -29,44 +30,44 @@ const Lesson = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Lesson {lesson_no}</h1>
+    <div className="p-6 animate__animated animate__fadeIn animate__fast">
+      <h1 className="text-3xl font-extrabold mb-6 text-center text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600">
+        Lesson {lesson_no}
+      </h1>
 
       {/* Display vocabularies for the lesson */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {lessonVocabularies.length === 0 ? (
           <p>No vocabularies found for this lesson.</p>
         ) : (
           lessonVocabularies.map((vocab) => (
             <div
               key={vocab.id}
-              className={`p-4 border rounded-lg ${vocab.difficulty === "easy"
-                ? "bg-green-200"
-                : vocab.difficulty === "medium"
-                  ? "bg-orange-200"
-                  : "bg-red-200"
-                }`}
+              className={`p-6 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 ${
+                vocab.difficulty === "easy"
+                  ? "bg-gradient-to-r from-green-400 to-green-600 text-white"
+                  : vocab.difficulty === "medium"
+                  ? "bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+                  : "bg-gradient-to-r from-red-400 to-red-600 text-white"
+              } animate__animated animate__fadeIn`}
             >
-              <h3 className="font-semibold flex items-center">
+              <h3 className="font-semibold text-3xl text-black flex items-center justify-between">
                 {vocab.word}
                 <button
                   onClick={() => speakWord(vocab.word)}
-                  className=" ml-8 p-1 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition"
+                  className="p-2 bg-blue-500 text-white rounded-full shadow-lg transform hover:scale-110 transition-all"
                   aria-label={`Speak ${vocab.word}`}
                 >
-                  {/* Microphone Icon */}
-                  <div className="flex text-xl " >
-                    <FaVolumeUp />
-                  </div>
+                  <FaVolumeUp className="text-xl" />
                 </button>
               </h3>
-              <p>
+              <p className="mt-2 text-xl text-black">
                 <strong>Meaning:</strong> {vocab.meaning}
               </p>
-              <p>
+              <p className=" text-xl text-black">
                 <strong>Pronunciation:</strong> {vocab.pronunciation}
               </p>
-              <p>
+              <p className= "text-xl text-black">
                 <strong>Part of Speech:</strong> {vocab.part_of_speech}
               </p>
 
@@ -75,7 +76,7 @@ const Lesson = () => {
                   e.stopPropagation(); // Prevent card click event
                   openModal(vocab);
                 }}
-                className="mt-2 p-2 bg-blue-500 text-white rounded-md"
+                className="mt-4 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition duration-300"
               >
                 When to Say
               </button>
@@ -86,21 +87,21 @@ const Lesson = () => {
 
       {/* Modal for "When to Say" */}
       {modalData && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
-          <div className="bg-white p-6 rounded-lg">
-            <h3 className="font-semibold text-lg">{modalData.word}</h3>
-            <p>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-20 animate__animated animate__fadeIn animate__faster">
+          <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 rounded-lg shadow-2xl max-w-lg mx-auto animate__animated animate__zoomIn animate__faster">
+            <h3 className="font-semibold text-3xl text-white">{modalData.word}</h3>
+            <p className="text-white">
               <strong>Meaning:</strong> {modalData.meaning}
             </p>
-            <p>
+            <p className="text-white">
               <strong>When to Say:</strong> {modalData.when_to_say}
             </p>
-            <p>
+            <p className="text-white">
               <strong>Example:</strong> {modalData.example}
             </p>
             <button
               onClick={closeModal}
-              className="mt-4 p-2 bg-red-500 text-white rounded-md"
+              className="mt-6 p-2 bg-red-600 hover:bg-red-700 text-white rounded-md shadow-lg transform hover:scale-105 transition"
             >
               Close
             </button>
@@ -110,7 +111,7 @@ const Lesson = () => {
 
       {/* "Back to Lesson" button */}
       <Link to="/startLearning">
-        <button className="mt-4 p-2 bg-gray-500 text-white rounded-md">
+        <button className="mt-6 p-3 bg-gray-800 text-white rounded-full shadow-lg transform hover:scale-105 transition-all">
           Back to Lesson
         </button>
       </Link>
