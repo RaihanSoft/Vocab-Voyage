@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { FaVolumeUp } from "react-icons/fa";
 import { useLoaderData, useParams, Link } from "react-router-dom";
-import "animate.css"; // Import Animate.css
+import "animate.css"; 
 
 const Lesson = () => {
-  const { lesson_no } = useParams(); // Get the lesson number from the URL
-  const { lessonVocabularies } = useLoaderData(); // Get the filtered vocabularies passed from loader
-  const [modalData, setModalData] = useState(null); // State for the modal data
+  const { lesson_no } = useParams(); 
+  const { lessonVocabularies } = useLoaderData();
+  const [modalData, setModalData] = useState(null); 
 
-  // Function to open the modal with the relevant vocabulary details
   const openModal = (vocab) => {
     setModalData(vocab);
   };
@@ -22,7 +21,7 @@ const Lesson = () => {
   const speakWord = (word) => {
     if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(word);
-      utterance.lang = "en-US"; // Set the language to English (adjust as needed)
+      utterance.lang = "en-US"; 
       speechSynthesis.speak(utterance);
     } else {
       alert("Sorry, your browser does not support text-to-speech.");

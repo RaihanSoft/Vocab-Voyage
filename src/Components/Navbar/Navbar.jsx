@@ -77,7 +77,7 @@ const Navbar = () => {
             {showWelcome && user && user.email && (
                 <div className="bg-gray-300 py-2 text-center">
                     <p className="text-sm font-semibold">
-                        Welcome, {user.displayName || "User"}!
+                        Welcome, {<span className="text-red-600" >{user.displayName}</span> || "User"} <span className="text-red-500" >!</span>
                     </p>
                 </div>
             )}

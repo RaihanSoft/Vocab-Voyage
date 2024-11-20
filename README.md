@@ -3,7 +3,7 @@
 Lingo Bingo is a fun and interactive language-learning application designed to help users expand their vocabulary and improve their communication skills in Spanish. Whether you're a beginner or looking to refine your language skills, Lingo Bingo provides an engaging platform to learn new words and their usage effectively.
 
 ## 🌐 Live URL
-[Visit Lingo Bingo Live](#)  
+[Visit Lingo Bingo Live](https://assignment-nine-906cd.web.app/)  
 *(Replace `#` with your live application URL once deployed)*
 
 ## 📚 Purpose
@@ -16,8 +16,6 @@ The purpose of Lingo Bingo is to make vocabulary learning enjoyable and efficien
 - **Interactive Vocabulary Games:** Engage in fun activities to memorize and practice words.
 - **Categorized Lessons:** Organized by difficulty levels and lessons to ensure structured learning.
 - **Audio Pronunciation:** Hear the correct pronunciation of each word.
-- **Usage Examples:** Real-life examples for better understanding.
-- **Progress Tracking:** Monitor your learning progress over time.
 
 ## 🛠️ Technologies and Tools
 - **Frontend:** React.js, Tailwind CSS
@@ -26,13 +24,13 @@ The purpose of Lingo Bingo is to make vocabulary learning enjoyable and efficien
 ## 📦 npm Packages Used
 Here are the npm packages utilized in the project:
 - **React-Router-Dom:** For seamless navigation between pages.
-- **Axios:** For making API calls (if applicable).
-- **TailwindCSS:** For modern and responsive styling.
 - **React-Icons:** For adding icons across the UI.
-- **React-Toastify:** To display toast notifications for user feedback.
-- **UUID:** To generate unique IDs for vocabulary items.
+- **Animate.css:** To display toast notifications for user feedback.
+- **AOS Package:** To display toast notifications for user feedback.
+- **SweetAlert2:** To display toast notifications for user feedback.
+
 
 ## 🚀 How to Run the Project Locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/lingo-bingo.git
+   git clone https://github.com/programming-hero-web-course1/b10-a9-authentication-RaihanSoft.git

@@ -4,47 +4,51 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { auth } from "../../Firebase/firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
 
-export const Context = createContext()
+export const Context = createContext();
 
 export const Provider = ({ children }) => {
-    const Googleprovider = new GoogleAuthProvider()
-    const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const Googleprovider = new GoogleAuthProvider();
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Register 
+    // Register
     const handleRegister = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
 
-
-    }
-    // Login 
+    // Login
     const handleLogin = (email, password) => {
-        // setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
-    }
+        return signInWithEmailAndPassword(auth, email, password);
+    };
 
-    // Signout 
+    // Signout
     const handleLogOut = () => {
-        // setLoading(true)
-        signOut(auth)
-    }
+        signOut(auth);
+    };
 
-    // Google LogIn  
-    const handleGoogleLogin = () => {
-        // setLoading(true)
-        return signInWithPopup(auth, Googleprovider)
+    // Google LogIn
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await signInWithPopup(auth, Googleprovider);
+            const userData = result.user;
+            setUser({
+                ...userData,
+                displayName: userData.displayName,
+                email: userData.email,
+                photoURL: userData.photoURL,  
+            });
+        } catch (error) {
+            console.error("Error during Google login:", error);
+        }
+    };
 
-
-
-    }
-
-    // Update Profile 
+    // Update Profile
     const manageProfile = (name, image) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: image,
         }).then(() => {
-            // Update the user state after profile change
+           
             setUser({
                 ...auth.currentUser,
                 displayName: name,
@@ -53,27 +57,24 @@ export const Provider = ({ children }) => {
         });
     };
 
-
-    // observer 
+    // Observer
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
-                setUser(currentUser)
-
+                setUser({
+                    ...currentUser,
+                    photoURL: currentUser.photoURL, 
+                });
+            } else {
+                setUser(null);
             }
-            else {
-                setUser(null)
-
-            }
-            setLoading(false)
+            setLoading(false);
 
             return () => {
-                unSubscribe()
-            }
-
-
-        })
-    }, [])
+                unSubscribe();
+            };
+        });
+    }, []);
 
     const authInfo = {
         handleRegister,
@@ -84,18 +85,11 @@ export const Provider = ({ children }) => {
         user,
         setUser,
         loading,
-
-
-    }
-
-
-
+    };
 
     return (
-        <Context.Provider value={authInfo} >
+        <Context.Provider value={authInfo}>
             {children}
         </Context.Provider>
-
-    )
-}
-
+    );
+};

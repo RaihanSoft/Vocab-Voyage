@@ -1,58 +1,3 @@
-// import { useLocation, useNavigate } from "react-router-dom";
-// import { useState } from "react";
-
-
-
-// const ForgotPassword = () => {
-//     const location = useLocation();
-//     const navigate = useNavigate();
-
-//     // Get email from query parameters
-//     const queryParams = new URLSearchParams(location.search);
-//     const initialEmail = queryParams.get("email") || "";
-
-//     const [email, setEmail] = useState(initialEmail);
-
-//     const handleEmailChange = (e) => setEmail(e.target.value);
-
-//     const handleResetPassword = () => {
-//         // Redirect user to Gmail
-//         window.open("https://mail.google.com", "_blank");
-//         navigate("/"); // Redirect back to homepage after reset
-//     };
-
-//     return (
-//         <div className="form-control">
-//             <label className="label">
-//                 <span className="label-text">Email</span>
-//             </label>
-//             <input
-//                 type="email"
-//                 name="email"
-//                 placeholder="Enter your email"
-//                 className="input input-bordered"
-//                 value={email}
-//                 onChange={handleEmailChange}
-//             />
-//             <button
-//                 className="btn btn-primary mt-4"
-//                 onClick={handleResetPassword}
-//             >
-//                 Reset Password
-//             </button>
-//         </div>
-//     );
-// };
-
-// export default ForgotPassword;
-
-
-// import { useLocation, useNavigate } from "react-router-dom";
-// import { useState, useContext } from "react";
-// import { sendPasswordResetEmail } from "firebase/auth";
-// import "animate.css"; // Import animate.css
-// import { Context } from "../Provider/Provider";
-
 import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../Provider/Provider";
 import { useContext, useState } from "react";
@@ -62,7 +7,7 @@ import { auth } from "../../Firebase/firebase.config";
 const ForgotPassword = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { user } = useContext(Context); // Get the auth context
+    const { user } = useContext(Context); 
 
     // Get email from query parameters or context
     const queryParams = new URLSearchParams(location.search);
@@ -81,15 +26,13 @@ const ForgotPassword = () => {
         }
 
         try {
-            // Use Firebase to send the password reset email
             await sendPasswordResetEmail(auth, email);
             setSuccess(true);
             setError(null);
 
-            // Redirect user to Gmail after a delay
             setTimeout(() => {
                 window.open("https://mail.google.com", "_blank");
-                navigate("/"); // Redirect back to homepage
+                navigate("/"); 
             }, 1000);
         } catch (error) {
             setSuccess(false);
