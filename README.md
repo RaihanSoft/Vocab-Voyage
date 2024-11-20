@@ -4,7 +4,10 @@ Lingo Bingo is a fun and interactive language-learning application designed to h
 
 ## 🌐 Live URL
 [Visit Lingo Bingo Live](https://assignment-nine-906cd.web.app/)  
-*(Replace `#` with your live application URL once deployed)*
+
+
+### 📄 Requirement Document
+[**Project Requirements**](./src/Components/assets/Assignment-09-003.pdf)
 
 ## 📚 Purpose
 The purpose of Lingo Bingo is to make vocabulary learning enjoyable and efficient. By incorporating gamified elements and practical examples, it aims to:
