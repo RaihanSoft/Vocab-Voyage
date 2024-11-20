@@ -3,3 +3,31 @@
 @tailwind utilities;
 
 
+.nav-link {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: black;
+    transition: color 0.25s;
+  }
+  
+  .nav-link::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background: black;
+    scale: 1 0;
+    z-index: -1;
+    transition: transform 0.45s;
+    border-radius: 10px;
+  }
+  
+  .nav-link:hover {
+    color: white;
+  }
+  
+  .nav-link:hover::after {
+    scale: 1 1;
+  }
+  

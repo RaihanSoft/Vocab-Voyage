@@ -215,10 +215,10 @@ const Login = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#2c1f56] via-[#1a1241] to-[#0d0b26]">
+        <div className="flex  justify-center items-center min-h-screen bg-gradient-to-br from-[#2c1f56] via-[#1a1241] to-[#0d0b26]">
             <div className="relative w-[450px] bg-gradient-to-br from-[#3c1b5e] via-[#2a1045] to-[#1a0d35] text-white shadow-2xl border border-gray-800 rounded-3xl p-10 animate__animated animate__zoomIn animate__fast">
                 {/* Welcome Header */}
-                <h2 className="text-3xl font-bold text-center mb-4 text-[#c5a0d3] animate__animated animate__bounceIn animate__fast">
+                <h2 className="text-3xl  font-bold text-center mb-4 text-[#c5a0d3] animate__animated animate__fast animate__rubberBand">
                     Welcome Back!
                 </h2>
                 <p className="text-center text-gray-300 mb-8 animate__animated animate__zoomIn animate__fast">
@@ -284,7 +284,7 @@ const Login = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full py-3 bg-gradient-to-r from-[#9c63d7] to-[#6a3a91] text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all animate__animated animate__zoomIn animate__fast"
+                        className="w-full  py-3 bg-gradient-to-r from-[#9c63d7] to-[#6a3a91] text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all animate__animated animate__bounceInRight animate__fast"
                     >
                         Login
                     </button>

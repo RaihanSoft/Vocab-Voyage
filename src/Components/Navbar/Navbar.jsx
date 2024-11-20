@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="text-lg flex-col lg:flex-row flex items-center justify-center ml-14 font-medium space-y-2 lg:space-x-8 lg:space-y-0">
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-3 rounded-lg" : "hover:underline"
+                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
                 }
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
@@ -27,7 +27,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-3 rounded-lg" : "hover:underline"
+                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
                 }
                 to="/startLearning"
                 onClick={() => setIsMenuOpen(false)}
@@ -36,7 +36,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-3 rounded-lg" : "hover:underline"
+                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
                 }
                 to="/tutorials"
                 onClick={() => setIsMenuOpen(false)}
@@ -47,7 +47,7 @@ const Navbar = () => {
             {user && user.email && (
                 <NavLink
                     className={({ isActive }) =>
-                        isActive ? "bg-black text-white p-3 rounded-lg" : "hover:underline"
+                        isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
                     }
                     to="/myProfile"
                     onClick={() => setIsMenuOpen(false)}
@@ -59,7 +59,7 @@ const Navbar = () => {
             )}
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-3 rounded-lg" : "hover:underline"
+                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
                 }
                 to="/aboutUs"
                 onClick={() => setIsMenuOpen(false)}
@@ -67,10 +67,12 @@ const Navbar = () => {
                 About-Us
             </NavLink>
         </div>
+
+
     );
 
     return (
-        <header className="shadow-lg bg-gray-100">
+        <header className="sticky top-0 z-50 backdrop-blur-xl bg-white bg-opacity-80 shadow-lg">
             {/* Welcome Message */}
             {showWelcome && user && user.email && (
                 <div className="bg-gray-300 py-2 text-center">
@@ -81,14 +83,14 @@ const Navbar = () => {
             )}
 
             {/* Navbar */}
-            <div className="w-11/12 mx-auto flex items-center justify-between py-4">
+            <div className="w-11/12 mx-auto flex items-center justify-between py-2 ">
                 {/* Logo */}
                 <Link to={'/'}>
-                    <div className="flex items-center">
+                    <div className="flex items-center animate__hinge ">
                         <img className="w-12 h-12 mr-2" src={logo} alt="Logo" />
                         <div>
-                            <h2 className="text-red-500 font-bold text-2xl">Lingo</h2>
-                            <h2 className="text-blue-500 font-bold text-2xl">Bingo</h2>
+                            <h2 className="text-red-500 font-bold text-xl">Lingo</h2>
+                            <h2 className="text-blue-500 font-bold text-xl">Bingo</h2>
                         </div>
                     </div>
                 </Link>
@@ -155,6 +157,9 @@ const Navbar = () => {
 
             </div>
         </header>
+
+
+
     );
 };
 
