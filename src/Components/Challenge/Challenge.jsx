@@ -13,21 +13,21 @@ const Challenge = () => {
 
   // Initialize AOS
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true }); // Animations happen only once when they come into view
+    AOS.init({ duration: 1000, once: true }); 
   }, []);
 
   return (
-    <section className="bg-gradient-to-r from-blue-500 via-blue-300 to-white text-gray-800 py-16 relative overflow-hidden">
+    <section className="bg-blue-100 py-16 relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full blur-3xl opacity-20 animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-20 animate-pulse"></div>
 
       {/* Main Content */}
-      <div className="container mx-auto text-center" data-aos="fade-up">
-        <h2 className="text-4xl font-bold mb-6 text-white">
+      <div className="container mx-auto text-center " data-aos="fade-up">
+        <h2 className="text-4xl font-bold mb-6 text-black">
           This Week&apos;s Challenge
         </h2>
-        <p className="text-lg mb-8 text-white">
+        <p className="text-lg mb-8 text-black">
           Cozy up this winter and take on our weekly challenge! Master 50 new words and unlock exclusive rewards.
         </p>
 

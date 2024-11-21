@@ -5,10 +5,9 @@ import { useInView } from 'react-intersection-observer';
 const SuccessSection = () => {
   const [hasStartedCounting, setHasStartedCounting] = useState(false);
 
-  // Intersection observer hook
   const { ref, inView } = useInView({
-    triggerOnce: true,  // Only trigger once when it appears in the view
-    threshold: 0.5,     // Trigger when 50% of the section is in view
+    triggerOnce: true,  
+    threshold: 0.5,     
   });
 
   if (inView && !hasStartedCounting) {
@@ -16,8 +15,8 @@ const SuccessSection = () => {
   }
 
   return (
-    <section ref={ref} className="bg-gradient-to-r from-blue-500 via-purple-600 to-indigo-700 p-12 text-center text-white">
-      <h1 className="text-4xl font-bold mb-8 animate__animated animate__fadeInUp" data-aos="fade-up">
+    <section ref={ref} className="bg-blue-100 py-10 p-12 text-center text-white">
+      <h1 className="text-4xl font-bold mb-8 animate__animated animate__fadeInLeft text-black " data-aos="fade-up">
         Our Success So Far
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

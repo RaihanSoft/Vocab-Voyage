@@ -42,15 +42,15 @@ const OurMission = () => {
   }, []);
 
   return (
-    <section className="about-section px-6 py-12 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600">
+    <section className="about-section px-6 py-12 bg-blue-100 ">
       <h1
-        className="text-4xl font-bold text-center mb-8 text-white animate__animated animate__fadeIn"
-        data-aos="fade-down"
+        className="text-4xl font-bold text-center mb-8 text-black animate__animated animate__fadeIn "
+        data-aos="fade-up"
       >
         Our Mission
       </h1>
       <div className="mission mb-12 text-center">
-        <p className="text-lg text-white animate__animated animate__fadeInUp" data-aos="fade-up">
+        <p className="text-lg text-black animate__animated animate__fadeInRight" data-aos="fade-up">
           At <strong>Lingo Bingo</strong>, our mission is to make learning new vocabulary fun, engaging, and accessible for everyone. Expanding your vocabulary opens new opportunities for growth and communication.
         </p>
       </div>
@@ -58,9 +58,9 @@ const OurMission = () => {
         {steps.map((step, index) => (
           <div
             key={index}
-            className="step-item bg-gradient-to-r from-teal-500 via-blue-400 to-indigo-500 hover:from-blue-500 hover:to-purple-600 text-white shadow-lg rounded-lg p-6 text-center animate__animated animate__fadeIn"
+            className="step-item bg-gradient-to-r from-teal-500 via-blue-400 to-indigo-500 text-white shadow-lg rounded-lg p-6 text-center animate__animated animate__fadeIn"
             data-aos="zoom-in"
-            data-aos-delay={`${index * 100}`} // Stagger animations
+            data-aos-delay={`${index * 100}`} 
           >
             <div className="icon text-5xl mb-4">{step.icon}</div>
             <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
